@@ -3,6 +3,7 @@ package com.ssh.lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.*;
@@ -22,12 +23,12 @@ class LottoGeneratorTest {
     void generateLottoWithEnoughMoney() {
 
         // when
-        Set<Integer>[] lotto = lottoGenerator.getLotto(validMoney);
-        Set<Integer>[] lotto2 = lottoGenerator.getLotto(validMoney2);
+        ArrayList<Lotto> lotto = lottoGenerator.getLotto(validMoney);
+        ArrayList<Lotto> lotto2 = lottoGenerator.getLotto(validMoney2);
 
         // then
-        assertThat(lotto.length).isEqualTo(1);
-        assertThat(lotto2.length).isEqualTo(5);
+        assertThat(lotto.size()).isEqualTo(1);
+        assertThat(lotto2.size()).isEqualTo(5);
     }
 
     @DisplayName("1000원 미만을 입력하는 경우, 예외를 던진다.")
@@ -46,22 +47,22 @@ class LottoGeneratorTest {
     @Test
     void lottoNumberSize() {
         //when
-        Set<Integer>[] lottoArr = lottoGenerator.getLotto(validMoney);
-        Set<Integer> lotto = lottoArr[0];
+        ArrayList<Lotto> lottoArr = lottoGenerator.getLotto(validMoney);
+        Lotto lotto = lottoArr.get(0);
 
         //then
-        assertThat(lotto.size()).isEqualTo(6);
+        assertThat(lotto.getSize()).isEqualTo(6);
     }
 
     @DisplayName("로또 한 줄에 1 ~ 45 범위의 숫자를 생성해야 한다.")
     @Test
     void lottoNumberRangeTest() {
         //when
-        Set<Integer>[] lottoArr = lottoGenerator.getLotto(validMoney);
-        Set<Integer> lotto = lottoArr[0];
+        ArrayList<Lotto> lottoArr = lottoGenerator.getLotto(validMoney);
+        Lotto lotto = lottoArr.get(0);
 
         //then
-        assertThat(lotto.stream().allMatch(v -> v >= 1 & v <= 45)).isTrue();
+        assertThat(lotto.getLotto().stream().allMatch(v -> v >= 1 & v <= 45)).isTrue();
     }
 
 }

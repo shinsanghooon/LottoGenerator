@@ -1,5 +1,6 @@
 package com.ssh.lotto;
 
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
@@ -13,15 +14,16 @@ public class LottoWinningChecker {
      * @param myLotto 구매한 로또 리스트
      * @return 로또 순위 별 당첨 개수가 포함된 Map
      */
-    public Map<LottoWinningEnum, Integer> execute(Set<Integer>[] myLotto, Set<Integer> winningNumberSet) {
+    public Map<LottoWinningEnum, Integer> execute(ArrayList<Lotto> myLotto, Set<Integer> winningNumberSet) {
 
         Map<LottoWinningEnum, Integer> lottoWinningMap = new TreeMap<>();
         initializeMap(lottoWinningMap);
 
-        for (Set<Integer> myLottoOneLine : myLotto) {
-            myLottoOneLine.retainAll(winningNumberSet);
+        for (Lotto myLottoOneLine : myLotto) {
+            Set<Integer> lotto = myLottoOneLine.getLotto();
+            lotto.retainAll(winningNumberSet);
 
-            int result = myLottoOneLine.size();
+            int result = lotto.size();
             if (result >= MINIMUM_NUMBER_OF_WINNING) {
                 addResultToWinningMap(lottoWinningMap, result);
             }

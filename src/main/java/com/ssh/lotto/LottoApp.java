@@ -14,11 +14,11 @@ public class LottoApp {
         int money = sc.nextInt();
 
         LottoGenerator lottoGenerator = new LottoGenerator(NUMBER_OF_ONE_LINE);
-        Set<Integer>[] myLotto = lottoGenerator.getLotto(money);
+        ArrayList<Lotto> myLotto = lottoGenerator.getLotto(money);
 
-        System.out.println(myLotto.length + "개를 구매했습니다.");
+        System.out.println(myLotto.size() + "개를 구매했습니다.");
 
-        for (Set<Integer> lotto : myLotto) {
+        for (Lotto lotto : myLotto) {
             System.out.println(lotto.toString());
         }
 

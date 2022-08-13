@@ -3,10 +3,7 @@ package com.ssh.lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,14 +12,15 @@ class LottoWinningCheckerTest {
 
     LottoWinningChecker winningChecker = new LottoWinningChecker();
     Set<Integer> winningNumberSet = new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+    private java.util.ArrayList<Lotto> ArrayList;
 
     @DisplayName("하나도 못 맞춘 경우, 당첨 로또 개수를 반환한다.")
     @Test
     void noMatchesLineCount() {
         // given
-        Set<Integer>[] myLotto = new Set[1];
-        HashSet<Integer> lotto = new HashSet<>(Arrays.asList(40, 41, 42, 43, 44, 45));
-        myLotto[0] = lotto;
+        ArrayList<Lotto> myLotto = new ArrayList<>();
+        Lotto lotto = new Lotto(new HashSet<>(Arrays.asList(40, 41, 42, 43, 44, 45)));
+        myLotto.add(lotto);
 
         // when
         Map<LottoWinningEnum, Integer> result =
@@ -39,9 +37,9 @@ class LottoWinningCheckerTest {
     @Test
     void threeMatchesLineCount() {
         // given
-        Set<Integer>[] myLotto = new Set[1];
-        HashSet<Integer> lotto = new HashSet<>(Arrays.asList(1, 2, 3, 11, 12, 13));
-        myLotto[0] = lotto;
+        ArrayList<Lotto> myLotto = new ArrayList<>();
+        Lotto lotto = new Lotto(new HashSet<>(Arrays.asList(1, 2, 3, 11, 12, 13)));
+        myLotto.add(lotto);
 
         // when
         Map<LottoWinningEnum, Integer> result =
@@ -58,9 +56,9 @@ class LottoWinningCheckerTest {
     @Test
     void fourMatchesLineCount() {
         // given
-        Set<Integer>[] myLotto = new Set[1];
-        HashSet<Integer> lotto = new HashSet<>(Arrays.asList(1, 2, 3, 4, 12, 13));
-        myLotto[0] = lotto;
+        ArrayList<Lotto> myLotto = new ArrayList<>();
+        Lotto lotto = new Lotto(new HashSet<>(Arrays.asList(1, 2, 3, 4, 12, 13)));
+        myLotto.add(lotto);
 
         // when
         Map<LottoWinningEnum, Integer> result =
@@ -77,9 +75,9 @@ class LottoWinningCheckerTest {
     @Test
     void fiveMatchesLineCount() {
         // given
-        Set<Integer>[] myLotto = new Set[1];
-        HashSet<Integer> lotto = new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 13));
-        myLotto[0] = lotto;
+        ArrayList<Lotto> myLotto = new ArrayList<>();
+        Lotto lotto = new Lotto(new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 13)));
+        myLotto.add(lotto);
 
         // when
         Map<LottoWinningEnum, Integer> result =
@@ -96,9 +94,9 @@ class LottoWinningCheckerTest {
     @Test
     void sixMatchesLineCount() {
         // given
-        Set<Integer>[] myLotto = new Set[1];
-        HashSet<Integer> lotto = new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 6));
-        myLotto[0] = lotto;
+        ArrayList<Lotto> myLotto = new ArrayList<>();
+        Lotto lotto = new Lotto(new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 6)));
+        myLotto.add(lotto);
 
         // when
         Map<LottoWinningEnum, Integer> result =
@@ -116,11 +114,11 @@ class LottoWinningCheckerTest {
     @Test
     void multipleMatchesLine() {
         // given
-        Set<Integer>[] myLotto = new Set[2];
-        HashSet<Integer> lotto1 = new HashSet<>(Arrays.asList(1, 2, 3, 14, 15, 16));
-        HashSet<Integer> lotto2 = new HashSet<>(Arrays.asList(1, 2, 3, 4, 15, 16));
-        myLotto[0] = lotto1;
-        myLotto[1] = lotto2;
+        ArrayList<Lotto> myLotto = new ArrayList<>();
+        Lotto lotto1 = new Lotto(new HashSet<>(Arrays.asList(1, 2, 3, 14, 15, 16)));
+        Lotto lotto2 = new Lotto(new HashSet<>(Arrays.asList(1, 2, 3, 4, 15, 16)));
+        myLotto.add(lotto1);
+        myLotto.add(lotto2);
 
         // when
         Map<LottoWinningEnum, Integer> result =
