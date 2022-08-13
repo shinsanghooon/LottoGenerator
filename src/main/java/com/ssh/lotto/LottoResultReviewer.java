@@ -1,4 +1,4 @@
-package lotto;
+package com.ssh.lotto;
 
 import java.util.Map;
 
