@@ -1,5 +1,7 @@
 package com.ssh.lotto;
 
+import com.ssh.lotto.view.ResultPrinter;
+
 import java.util.*;
 
 public class LottoApp {
@@ -14,7 +16,7 @@ public class LottoApp {
         int money = sc.nextInt();
 
         LottoGenerator lottoGenerator = new LottoGenerator(NUMBER_OF_ONE_LINE);
-        ArrayList<Lotto> myLotto = lottoGenerator.getLotto(money);
+        List<Lotto> myLotto = lottoGenerator.getLotto(money);
 
         System.out.println(myLotto.size() + "개를 구매했습니다.");
 
@@ -34,11 +36,11 @@ public class LottoApp {
         LottoWinningChecker winningChecker = new LottoWinningChecker();
         Map<LottoWinningEnum, Integer> result = winningChecker.execute(myLotto, winningNumberSet);
 
-        System.out.println();
-        System.out.println("당첨 통계");
-        System.out.println("-----------------");
-        LottoResultReviewer.printLottoResult(result);
-        LottoResultReviewer.calculateReturnRate(money, result);
+        // 결과 출력
+        double returnRate = LottoResultReviewer.getReturnRate(money, result);
+        ResultPrinter.printResultInit();
+        ResultPrinter.printLottoResult(result);
+        ResultPrinter.calculateReturnRate(returnRate);
 
     }
 }

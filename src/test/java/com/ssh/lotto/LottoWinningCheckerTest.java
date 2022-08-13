@@ -37,7 +37,7 @@ class LottoWinningCheckerTest {
     @Test
     void threeMatchesLineCount() {
         // given
-        ArrayList<Lotto> myLotto = new ArrayList<>();
+        List<Lotto> myLotto = new ArrayList<>();
         Lotto lotto = new Lotto(new HashSet<>(Arrays.asList(1, 2, 3, 11, 12, 13)));
         myLotto.add(lotto);
 
@@ -56,7 +56,7 @@ class LottoWinningCheckerTest {
     @Test
     void fourMatchesLineCount() {
         // given
-        ArrayList<Lotto> myLotto = new ArrayList<>();
+        List<Lotto> myLotto = new ArrayList<>();
         Lotto lotto = new Lotto(new HashSet<>(Arrays.asList(1, 2, 3, 4, 12, 13)));
         myLotto.add(lotto);
 
@@ -75,7 +75,7 @@ class LottoWinningCheckerTest {
     @Test
     void fiveMatchesLineCount() {
         // given
-        ArrayList<Lotto> myLotto = new ArrayList<>();
+        List<Lotto> myLotto = new ArrayList<>();
         Lotto lotto = new Lotto(new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 13)));
         myLotto.add(lotto);
 
@@ -94,7 +94,7 @@ class LottoWinningCheckerTest {
     @Test
     void sixMatchesLineCount() {
         // given
-        ArrayList<Lotto> myLotto = new ArrayList<>();
+        List<Lotto> myLotto = new ArrayList<>();
         Lotto lotto = new Lotto(new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 6)));
         myLotto.add(lotto);
 
@@ -114,7 +114,7 @@ class LottoWinningCheckerTest {
     @Test
     void multipleMatchesLine() {
         // given
-        ArrayList<Lotto> myLotto = new ArrayList<>();
+        List<Lotto> myLotto = new ArrayList<>();
         Lotto lotto1 = new Lotto(new HashSet<>(Arrays.asList(1, 2, 3, 14, 15, 16)));
         Lotto lotto2 = new Lotto(new HashSet<>(Arrays.asList(1, 2, 3, 4, 15, 16)));
         myLotto.add(lotto1);

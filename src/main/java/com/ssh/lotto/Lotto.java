@@ -25,7 +25,7 @@ public class Lotto {
     }
 
     private void validateSize(Set<Integer> lotto) {
-        boolean isLottoSizeSix = lotto.size() != CNT_OF_LOTTO;
+        boolean isLottoSizeSix = lotto.size() == CNT_OF_LOTTO;
         if (!isLottoSizeSix) {
             throw new IllegalArgumentException("로또 한 줄에 포함되어야 하는 숫자는 6개입니다.");
         }

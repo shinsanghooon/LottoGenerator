@@ -1,12 +1,15 @@
 package com.ssh.lotto;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class LottoGenerator {
 
-    private int numberOfOneLine;
+    private static int numberOfOneLine;
 
     public LottoGenerator(int numberOfOneLine) {
         this.numberOfOneLine = numberOfOneLine;
@@ -17,27 +20,30 @@ public class LottoGenerator {
      * @param money 구매 금액
      * @return 생성된 로또 리스트
      */
-    public ArrayList<Lotto> getLotto(int money) {
+    public List<Lotto> getLotto(int money) {
         if (money < 1000) {
             throw new IllegalArgumentException("구입 금액은 1000원 이상이어야 합니다.");
         }
 
-        int generate_cnt = money / 1000;
+        int generateCnt = money / 1000;
 
-        ArrayList<Lotto> lottos = new ArrayList<>();
+        List<Lotto> lottoList = Stream
+            .generate(LottoGenerator::generateLottoOneLine)
+            .limit(generateCnt)
+            .collect(Collectors.toList());
 
-        for (int i = 0; i < generate_cnt; i++) {
-            lottos.add(generateLottoOneLine());
+        for (int i = 0; i < generateCnt; i++) {
+            lottoList.add(generateLottoOneLine());
         }
 
-        return lottos;
+        return lottoList;
     }
 
     /**
      * 로또 1줄을 생성한다.
      * @return 생성된 로또 1줄
      */
-    private Lotto generateLottoOneLine() {
+    private static Lotto generateLottoOneLine() {
         Set<Integer> set = new TreeSet<>();
         while (!(set.size() == numberOfOneLine)) {
             set.add((int) (Math.random() * 45) + 1);

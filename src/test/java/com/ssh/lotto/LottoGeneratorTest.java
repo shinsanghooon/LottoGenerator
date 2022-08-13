@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.*;
@@ -23,8 +24,8 @@ class LottoGeneratorTest {
     void generateLottoWithEnoughMoney() {
 
         // when
-        ArrayList<Lotto> lotto = lottoGenerator.getLotto(validMoney);
-        ArrayList<Lotto> lotto2 = lottoGenerator.getLotto(validMoney2);
+        List<Lotto> lotto = lottoGenerator.getLotto(validMoney);
+        List<Lotto> lotto2 = lottoGenerator.getLotto(validMoney2);
 
         // then
         assertThat(lotto.size()).isEqualTo(1);
@@ -47,7 +48,7 @@ class LottoGeneratorTest {
     @Test
     void lottoNumberSize() {
         //when
-        ArrayList<Lotto> lottoArr = lottoGenerator.getLotto(validMoney);
+        List<Lotto> lottoArr = lottoGenerator.getLotto(validMoney);
         Lotto lotto = lottoArr.get(0);
 
         //then
@@ -58,7 +59,7 @@ class LottoGeneratorTest {
     @Test
     void lottoNumberRangeTest() {
         //when
-        ArrayList<Lotto> lottoArr = lottoGenerator.getLotto(validMoney);
+        List<Lotto> lottoArr = lottoGenerator.getLotto(validMoney);
         Lotto lotto = lottoArr.get(0);
 
         //then
