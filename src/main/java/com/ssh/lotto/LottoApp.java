@@ -2,7 +2,7 @@ package com.ssh.lotto;
 
 import java.util.*;
 
-public class Lotto {
+public class LottoApp {
 
     private static final int NUMBER_OF_ONE_LINE = 6;
 
