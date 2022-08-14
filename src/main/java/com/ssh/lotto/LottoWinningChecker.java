@@ -48,16 +48,8 @@ public class LottoWinningChecker {
      * @param result 로또 한 줄에 당첨된 번호의 수
      */
     private void addResultToWinningMap(Map<LottoWinningEnum, Integer> lottoWinningMap, int result) {
-        if (result == 3) {
-            lottoWinningMap.put(LottoWinningEnum.THREE, lottoWinningMap.get(LottoWinningEnum.THREE) + 1);
-        } else if (result == 4) {
-            lottoWinningMap.put(LottoWinningEnum.FOUR, lottoWinningMap.get(LottoWinningEnum.FOUR) + 1);
-        } else if (result == 5) {
-            lottoWinningMap.put(LottoWinningEnum.FIVE, lottoWinningMap.get(LottoWinningEnum.FIVE) + 1);
-        } else {
-            // result = 6
-            lottoWinningMap.put(LottoWinningEnum.SIX, lottoWinningMap.get(LottoWinningEnum.SIX) + 1);
-        }
+        LottoWinningEnum winningResult = LottoWinningEnum.getResult(result);
+        lottoWinningMap.put(winningResult, lottoWinningMap.get(winningResult) + 1);
     }
 
 
