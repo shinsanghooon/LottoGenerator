@@ -4,7 +4,7 @@ import com.ssh.lotto.LottoWinningEnum;
 
 import java.util.Map;
 
-public class ResultPrinter {
+public class LottoResultPrintView {
 
     static public void printResultInit() {
         System.out.println("당첨 통계");

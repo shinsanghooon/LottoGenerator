@@ -1,6 +1,9 @@
 package com.ssh.lotto;
 
-import com.ssh.lotto.view.ResultPrinter;
+import com.ssh.lotto.view.LottoResultPrintView;
+import com.ssh.lotto.view.MoneyInsertionView;
+import com.ssh.lotto.view.PurchasedLottoListPrintView;
+import com.ssh.lotto.view.WinningNumberInsertionView;
 
 import java.util.*;
 
@@ -10,37 +13,22 @@ public class LottoApp {
 
     public static void main(String[] args) {
 
-        System.out.println("구매 금액을 입력해 주세요.");
-        
-        Scanner sc = new Scanner(System.in);
-        int money = sc.nextInt();
+        int money = MoneyInsertionView.insertMoney();
 
         LottoGenerator lottoGenerator = new LottoGenerator(NUMBER_OF_ONE_LINE);
         List<Lotto> myLotto = lottoGenerator.getLotto(money);
 
-        System.out.println(myLotto.size() + "개를 구매했습니다.");
+        PurchasedLottoListPrintView.print(myLotto);
 
-        for (Lotto lotto : myLotto) {
-            System.out.println(lotto.toString());
-        }
-
-        System.out.println();
-        System.out.println("지난 주 당첨 번호를 입력해주세요.");
-
-        Set<Integer> winningNumberSet = new HashSet<>();
-        for (int i = 0; i < NUMBER_OF_ONE_LINE; i++) {
-            String next = sc.next().split(",")[0];
-            winningNumberSet.add(Integer.parseInt(next));
-        }
-
+        Set<Integer> winningNumberSet = WinningNumberInsertionView.insertWinningNumber(NUMBER_OF_ONE_LINE);
         LottoWinningChecker winningChecker = new LottoWinningChecker();
         Map<LottoWinningEnum, Integer> result = winningChecker.execute(myLotto, winningNumberSet);
 
         // 결과 출력
         double returnRate = LottoResultReviewer.getReturnRate(money, result);
-        ResultPrinter.printResultInit();
-        ResultPrinter.printLottoResult(result);
-        ResultPrinter.calculateReturnRate(returnRate);
+        LottoResultPrintView.printResultInit();
+        LottoResultPrintView.printLottoResult(result);
+        LottoResultPrintView.calculateReturnRate(returnRate);
 
     }
 }

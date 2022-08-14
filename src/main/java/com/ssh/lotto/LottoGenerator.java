@@ -1,10 +1,8 @@
 package com.ssh.lotto;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class LottoGenerator {
@@ -32,10 +30,6 @@ public class LottoGenerator {
             .limit(generateCnt)
             .collect(Collectors.toList());
 
-        for (int i = 0; i < generateCnt; i++) {
-            lottoList.add(generateLottoOneLine());
-        }
-
         return lottoList;
     }
 
@@ -48,6 +42,7 @@ public class LottoGenerator {
         while (!(set.size() == numberOfOneLine)) {
             set.add((int) (Math.random() * 45) + 1);
         }
+
         return new Lotto(set);
     }
 }
