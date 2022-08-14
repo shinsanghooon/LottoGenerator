@@ -9,6 +9,8 @@ public class LottoGenerator {
 
     private static int numberOfOneLine;
 
+    private static int REQUIRED_MONEY_FOR_ONE_LOTTO = 1000;
+
     public LottoGenerator(int numberOfOneLine) {
         this.numberOfOneLine = numberOfOneLine;
     }
@@ -19,11 +21,11 @@ public class LottoGenerator {
      * @return 생성된 로또 리스트
      */
     public List<Lotto> getLottos(int money) {
-        if (money < 1000) {
+        if (money < REQUIRED_MONEY_FOR_ONE_LOTTO) {
             throw new IllegalArgumentException("구입 금액은 1000원 이상이어야 합니다.");
         }
 
-        int generateCnt = money / 1000;
+        int generateCnt = money / REQUIRED_MONEY_FOR_ONE_LOTTO;
 
         List<Lotto> lottoList = Stream
             .generate(LottoGenerator::generateLottoOneLine)
