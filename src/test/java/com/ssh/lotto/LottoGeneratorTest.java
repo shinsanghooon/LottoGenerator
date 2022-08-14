@@ -24,8 +24,8 @@ class LottoGeneratorTest {
     void generateLottoWithEnoughMoney() {
 
         // when
-        List<Lotto> lotto = lottoGenerator.getLotto(validMoney);
-        List<Lotto> lotto2 = lottoGenerator.getLotto(validMoney2);
+        List<Lotto> lotto = lottoGenerator.getLottos(validMoney);
+        List<Lotto> lotto2 = lottoGenerator.getLottos(validMoney2);
 
         // then
         assertThat(lotto.size()).isEqualTo(1);
@@ -37,7 +37,7 @@ class LottoGeneratorTest {
     void generateLottoWithNotEnoughMoney() {
         // when
         IllegalArgumentException illegalArgumentException =
-                assertThrows(IllegalArgumentException.class, () -> lottoGenerator.getLotto(invalidMoney));
+                assertThrows(IllegalArgumentException.class, () -> lottoGenerator.getLottos(invalidMoney));
 
         // then
         assertThat(illegalArgumentException.getMessage())
@@ -48,7 +48,7 @@ class LottoGeneratorTest {
     @Test
     void lottoNumberSize() {
         //when
-        List<Lotto> lottoArr = lottoGenerator.getLotto(validMoney);
+        List<Lotto> lottoArr = lottoGenerator.getLottos(validMoney);
         Lotto lotto = lottoArr.get(0);
 
         //then
@@ -59,7 +59,7 @@ class LottoGeneratorTest {
     @Test
     void lottoNumberRangeTest() {
         //when
-        List<Lotto> lottoArr = lottoGenerator.getLotto(validMoney);
+        List<Lotto> lottoArr = lottoGenerator.getLottos(validMoney);
         Lotto lotto = lottoArr.get(0);
 
         //then

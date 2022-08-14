@@ -18,7 +18,7 @@ public class LottoGenerator {
      * @param money 구매 금액
      * @return 생성된 로또 리스트
      */
-    public List<Lotto> getLotto(int money) {
+    public List<Lotto> getLottos(int money) {
         if (money < 1000) {
             throw new IllegalArgumentException("구입 금액은 1000원 이상이어야 합니다.");
         }

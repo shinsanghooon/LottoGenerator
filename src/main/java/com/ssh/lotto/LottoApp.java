@@ -16,7 +16,7 @@ public class LottoApp {
         int money = MoneyInsertionView.insertMoney();
 
         LottoGenerator lottoGenerator = new LottoGenerator(NUMBER_OF_ONE_LINE);
-        List<Lotto> myLotto = lottoGenerator.getLotto(money);
+        List<Lotto> myLotto = lottoGenerator.getLottos(money);
 
         PurchasedLottoListPrintView.print(myLotto);
 
