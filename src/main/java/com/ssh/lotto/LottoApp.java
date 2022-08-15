@@ -31,7 +31,7 @@ public class LottoApp {
         Map<LottoWinningEnum, Integer> result = winningChecker.execute(myLotto, winningNumberSet);
 
         // 수익률 계산
-        double returnRate = LottoResultReviewer.getReturnRate(money, result);
+        int returnRate = LottoResultReviewer.getReturnRate(money, result);
 
         // 결과 출력
         LottoResultPrintView.printResultInit();

@@ -22,7 +22,7 @@ public class LottoResultPrintView {
         }
     }
 
-    static public void calculateReturnRate(double returnRate) {
+    static public void calculateReturnRate(int returnRate) {
         System.out.println("총 수익률은 " + returnRate + "% 입니다.");
     }
 }
